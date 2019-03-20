@@ -2,10 +2,13 @@
 
 from flask import Flask, request, jsonify, render_template
 import os
-import dialogflow
 import requests
 import json
 import pusher
+
+import dialogflow
+import os
+
 
 app = Flask(__name__)
 
@@ -62,10 +65,10 @@ def send_message():
 
     # initialize Pusher
     pusher_client = pusher.Pusher(
-        app_id=os.getenv('739886'),
-        key=os.getenv('261524dd64f423ac2f60'),
-        secret=os.getenv('b848dd86c52fd01aeb99'),
-        cluster=os.getenv('us2'),
+        app_id=os.getenv('PUSHER_APP_ID'),
+        key=os.getenv('PUSHER_KEY'),
+        secret=os.getenv('PUSHER_SECRET'),
+        cluster=os.getenv('PUSHER_CLUSTER'),
         ssl=True)
         
     socketId = request.form['socketId']
